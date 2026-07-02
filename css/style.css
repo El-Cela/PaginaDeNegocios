@@ -1,0 +1,924 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================================================== */
+:root {
+    
+    /* Colores Principales (Monocromáticos) */
+    --primary-color: #ffffff;       /* Blanco puro para los elementos de máxima atención */
+    --primary-hover: #e5e7eb;       /* Gris muy claro para los hovers */
+    --secondary-color: #f3f4f6;     /* Contraste secundario claro */
+    
+    /* Fondos (Negros y Grises Profundos) */
+    --bg-main: #0a0a0a;             /* Negro azabache sutil (más elegante que el #000000 puro) */
+    --bg-card: #121212;             /* Un gris oscuro casi negro para tarjetas y contenedores */
+    --white: #1a1a1a;               /* Tercer nivel de elevación para elementos flotantes o menús */
+    
+    /* Textos (Escala de Blancos y Grises) */
+    --text-dark: #f5f5f5;           /* Texto principal (Blanco suave para no cansar la vista) */
+    --text-muted: #a3a3a3;          /* Texto secundario (Gris medio) */
+    --text-light: #525252;          /* Texto desactivado, bordes finos o subtítulos muy discretos */
+    
+    /* Estados (Manteniendo la estética, pero legibles) */
+    --color-open-bg: #172554;       /* Azul marino muy oscuro (mantiene el orden sin romper la estética) */
+    --color-open-text: #60a5fa;     
+    --color-closed-bg: #2d0606;     /* Vino/Rojo quemado muy oscuro */
+    --color-closed-text: #f87171;   
+    
+    /* Efectos y Estructura */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.7);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.8);
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+.body2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+/* ==========================================================================
+   2. COMPONENTES REUTILIZABLES (Botones, Etiquetas)
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: #f3f4f6;
+    color: var(--text-light);
+}
+
+.btn-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+.btn-disabled {
+    background-color: #f3f4f6;
+    color: var(--color-closed-text);
+    cursor: not-allowed;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+}
+
+.badge-open {
+    background-color: var(--color-open-bg);
+    color: var(--color-open-text);
+}
+
+.badge-closed {
+    background-color: var(--color-closed-bg);
+    color: var(--color-closed-text);
+}
+
+/* ==========================================================================
+   3. ESTRUCTURA / LAYOUT DEL INDEX
+   ========================================================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.header {
+    background-color: var(--white);
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar {
+    display: table;
+    width: 100%;
+    height: 70px;
+}
+
+.nav-brand, .nav-menu, .nav-actions {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.nav-brand {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    width: 20%;
+}
+
+.nav-menu {
+    text-align: center;
+    width: 50%;
+    padding:20px;
+}
+
+.nav-menu a {
+    margin: 0 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+.nav-actions {
+    text-align: right;
+    width: 30%;
+}
+
+.nav-actions a {
+    margin-right: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.nav-actions a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section (Buscador) */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Formulario de búsqueda */
+.search-form {
+    background-color: var(--white);
+    padding: 8px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    display: table;
+    width: 100%;
+}
+
+.search-input-cell, .search-button-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.search-input-cell {
+    width: 80%;
+}
+
+.search-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    font-size: 1rem;
+    color: var(--text-dark);
+    outline: none;
+}
+
+.search-button-cell {
+    width: 20%;
+    text-align: right;
+}
+
+.search-form .btn {
+    width: 100%;
+    padding: 14px;
+}
+
+/* Catálogo / Grid de Servicios */
+.main-content {
+    padding: 60px 20px;
+}
+
+.main-content h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+.services-grid {
+    display: block;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+/* Tarjeta del Servicio (Estilo base) */
+.card-wrapper {
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: var(--white);
+    border: 1px solid #f3f4f6;
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-opacity {
+    opacity: 0.85;
+}
+
+.card-header {
+    display: table;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.card-title-area, .card-category-area {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.card-title-area {
+    width: 70%;
+}
+
+.card-title-area h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.card-category-area {
+    width: 30%;
+    text-align: right;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    height: 45px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-info-list {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.card-info-list p {
+    margin-bottom: 6px;
+}
+
+.card-footer {
+    display: table;
+    width: 100%;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 15px;
+}
+
+.card-price-area, .card-action-area {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.card-price-area {
+    font-size: 1.25rem;
+    font-weight: 700;
+    width: 50%;
+}
+
+.card-price-area span {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.card-action-area {
+    width: 50%;
+    text-align: right;
+}
+
+/* Footer */
+.footer {
+    background-color: #111827;
+    color: var(--text-light);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.875rem;
+    border-top: 1px solid #1f2937;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 110;
+}
+
+/* Las 3 líneas del icono */
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-dark);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+
+
+
+/* ==========================================================================
+   5. DISEÑO DE LA PÁGINA DE SOPORTE
+   ========================================================================== */
+.support-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 60px 20px;
+    border-radius: var(--radius);
+    border: 1px solid #f3f4f6;
+    box-shadow: var(--shadow-sm);
+}
+
+.support-info-card {
+    flex: 1;
+}
+
+.support-info-card h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: var(--text-ligh);
+}
+
+.support-subtitle {
+    color: var(--text-ligh);
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+}
+
+.support-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.channel-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--white);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #f3f4f6;
+}
+
+.channel-icon {
+    font-size: 1.5rem;
+}
+
+.channel-item h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.channel-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Tarjeta del Formulario */
+.support-form-card {
+    flex: 1;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid #f3f4f6;
+    box-shadow: var(--shadow-sm);
+}
+
+.support-form-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: var(--text-dark);
+}
+
+.support-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.btn-block {
+    width: 100%;
+    padding: 14px;
+}
+
+
+
+/* Enlace activo en el menú */
+.active-link {
+    color: var(--primary-color) !important;
+    font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   6. DISEÑO DE LA PÁGINA DE LOGIN
+   ========================================================================== */
+.login-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px); /* Resta altura de header y footer */
+    padding: 40px 20px;
+}
+
+.login-card {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: var(--radius);
+    border: 1px solid #f3f4f6;
+    box-shadow: var(--shadow-md);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Alineación de etiqueta y enlace de recuperar contraseña */
+.label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-link-sm {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.form-link-sm:hover {
+    text-decoration: underline;
+}
+
+/* Opciones extra (Checkbox) */
+.form-options {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: -5px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    cursor: pointer;
+    accent-color: var(--primary-color); /* Cambia el color del checkbox nativo */
+    width: 16px;
+    height: 16px;
+}
+
+/* Elementos del pie de la tarjeta */
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.login-footer a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Divisor decorativo */
+.divider {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e5e7eb;
+    z-index: 1;
+}
+
+.divider span {
+    position: relative;
+    background-color: var(--white);
+    padding: 0 10px;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.admin-notice {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.4;
+    background-color: #f9fafb;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px dashed #e5e7eb;
+}
+
+/* Ajustes Responsive para móvil */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px 20px;
+        box-shadow: none; /* Simplifica la vista en pantallas ultra pequeñas */
+        border: none;
+        background: transparent;
+    }
+    
+    body {
+        background-color: var(--white); /* Evita contraste de fondo en celular */
+    }
+    
+    .divider span {
+        background-color: var(--white);
+    }
+}
+
+/* ==========================================================================
+   7. DISEÑO DE LA PÁGINA DE REGISTRO (SELECTOR DE ROLES)
+   ========================================================================== */
+.role-selector {
+    display: flex;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.role-option {
+    flex: 1;
+    cursor: pointer;
+}
+
+/* Esconde el círculo de radio por defecto */
+.role-option input[type="radio"] {
+    display: none;
+}
+
+/* Diseño de la tarjeta contenedora simulada */
+.role-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: var(--white);
+    transition: all 0.2s ease;
+}
+
+.role-icon {
+    font-size: 1.3rem;
+}
+
+.role-text strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+}
+
+.role-text p {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    line-height: 1.2;
+}
+
+/* Comportamiento cuando el radio oculto se activa/selecciona */
+.role-option input[type="radio"]:checked + .role-box {
+    border-color: var(--primary-color);
+    background-color: #f5f3ff; /* Fondo sutil índigo */
+    box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+/* Ajuste responsive para celulares muy pequeños */
+@media (max-width: 400px) {
+    .role-selector {
+        flex-direction: column;
+    }
+}
+
+
+
+
+/*-------------------------------------------------------------------------------------------
+---------------------------- Responsive para Soporte-----------------------------------------
+---------------------------------------------------------------------------------------------*/
+
+
+
+
+@media (max-width: 992px) {
+    .support-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .support-info-card, .support-form-card {
+        width: 100%;
+    }
+}
+
+/* Responsive para pantallas medianas (Tablets) */
+@media (max-width: 992px) {
+    .card-wrapper {
+        width: 50%;
+    }
+}
+
+/* Responsive para pantallas pequeñas (Celulares) */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Esconde menú en móvil */
+    }
+    .nav-actions .btn-primary {
+    display: none;
+}
+
+    .nav-brand { width: 40%; }
+    .nav-actions { width: 60%; }
+    
+    .card-wrapper {
+        width: 100%;
+    }
+    
+    .search-form, .search-input-cell, .search-button-cell {
+        display: block;
+        width: 100%;
+    }
+    
+    .search-button-cell {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 50px 50px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.main-content {
+    padding: 20px 20px;
+}
+
+@media (max-width: 768px) {
+    .nav-brand { width: 50%; }
+    .nav-actions { width: 50%; }
+    
+    .nav-menu-container {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* Mostrar el botón hamburguesa */
+    .menu-toggle {
+        display: flex;
+    margin-top: 25px;
+    }
+
+    /* Transformar el menú tradicional en un despliegue vertical oculto */
+    .nav-menu {
+        display: block;
+        position: fixed;
+        top: 70px; /* Justo debajo del header */
+        left: 200%; /* Escondido a la izquierda */
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 40px 20px;
+        transition: left 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        text-align: left;
+    }
+
+    /* Links del menú ahora uno abajo del otro */
+    .nav-menu a {
+        display: block;
+        margin: 0 0 25px 0;
+        font-size: 1.2rem;
+    }
+
+    /* Clase que activará JavaScript para mostrar el menú */
+    .nav-menu.active {
+        left: 0;
+    }
+
+    /* Animación del icono (Opcional: Convierte la hamburguesa en una "X") */
+    .menu-toggle.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Ajustes extra para el buscador y tarjetas en móvil */
+    .card-wrapper { width: 100%; }
+    .search-form, .search-input-cell, .search-button-cell { display: block; width: 100%; }
+    .search-button-cell { text-align: center; margin-top: 10px; }
+}
+
+.support-container {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 10px 10px;
+    border-radius: var(--radius);
+    border: 1px solid #f3f4f6;
+    box-shadow: var(--shadow-sm);
+}
+
+.support-info-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-ligh);
+}
+
+.support-subtitle {
+    color: var(--text-ligh);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.support-form-card {
+    flex: 1;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid #f3f4f6;
+    box-shadow: var(--shadow-sm);
+}
+.channel-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--white);
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #f3f4f6;
+}
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiMatch - Encuentra Servicios en tu Zona</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="nav-brand">
+                <span>ServiMatch</span>
+            </div>
+            
+            <div class="nav-menu-container">
+                
+                
+                <nav class="nav-menu" id="navMenu">
+                    <a href="index.html">Explorar</a>
+                    <a href="#">Cómo funciona</a>
+                    <a href="soporte.html" class="active-link">Soporte</a>
+                </nav>
+                
+            </div>
+
+            <div class="nav-actions">
+                <a href="login.html">Iniciar Sesión</a>
+                <button class="btn btn-primary">Publicar mi Negocio</button>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+        </div>
+    </div>
+</header>
+
+<main class="container main-content">
+        <div class="support-container">
+            
+            <div class="support-info-card">
+                <h2>¿Cómo podemos ayudarte?</h2>
+                <p class="support-subtitle">Si tienes dudas sobre el funcionamiento de la plataforma, problemas con un servicio adquirido o quieres reportar una queja, envíanos un mensaje. Nuestro equipo de administradores te responderá lo antes posible.</p>
+                
+                <div class="support-channels">
+                    <div class="channel-item">
+                        <span class="channel-icon">📩</span>
+                        <div>
+                            <h4>Correo Electrónico</h4>
+                            <p>NetherStudios@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-icon">⏱️</span>
+                        <div>
+                            <h4>Tiempo de respuesta</h4>
+                            <p>Menos de 24 horas hábiles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="support-form-card">
+                <h3>Enviar un mensaje a los Administradores</h3>
+                
+                <form action="#" method="POST" class="support-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico</label>
+                        <input type="email" id="correo" name="correo" placeholder="juan@ejemplo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo_asunto">Motivo del contacto</label>
+                        <select id="tipo_asunto" name="tipo_asunto" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="duda">Duda / Consulta general</option>
+                            <option value="queja">Queja sobre un negocio/servicio</option>
+                            <option value="tecnico">Problema técnico en la web</option>
+                            <option value="otro">Otro asunto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Detalles de tu duda o queja</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe aquí de forma detallada tu situación..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Enviar Solicitud</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ServiMatch. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
