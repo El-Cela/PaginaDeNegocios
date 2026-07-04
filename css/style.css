@@ -674,7 +674,6 @@ a {
         padding: 25px 20px;
         box-shadow: none; /* Simplifica la vista en pantallas ultra pequeñas */
         border: none;
-        background: transparent;
     }
     
     body {
@@ -736,9 +735,318 @@ a {
 /* Comportamiento cuando el radio oculto se activa/selecciona */
 .role-option input[type="radio"]:checked + .role-box {
     border-color: var(--primary-color);
-    background-color: #f5f3ff; /* Fondo sutil índigo */
+    background-color: var(--text-muted);
     box-shadow: 0 0 0 1px var(--primary-color);
+    
 }
+
+
+/* ==========================================================================
+   8. DISEÑO DE LA PÁGINA DE DETALLES DEL NEGOCIO
+   ========================================================================== */
+.business-header-card {
+    background-color: var(--white);
+    padding: 35px;
+    border-radius: var(--radius);
+    border: 1px solid #f3f4f6;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+}
+
+.business-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.business-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-top: 5px;
+}
+
+.business-category {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.business-location-badge {
+    background-color: var(--primary-color);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.business-long-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Lista de productos (Columna izquierda) */
+.products-section {
+    flex: 2; /* Toma más espacio que la sidebar */
+}
+
+.products-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.section-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-item {
+    background-color: var(--white);
+    border: 1px solid #f3f4f6;
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    transition: box-shadow 0.2s;
+}
+
+.product-item:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.product-details h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.product-details p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    display: block;
+}
+
+/* Sidebar de Horarios (Columna derecha) */
+.business-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: var(--radius);
+    border: 1px solid #f3f4f6;
+    box-shadow: var(--shadow-sm);
+}
+
+.sidebar-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 8px;
+}
+
+.hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.hours-table td {
+    padding: 8px 0;
+    color: var(--text-muted);
+}
+
+.hours-time {
+    text-align: right;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.current-day td {
+    font-weight: 700;
+    color: var(--primary-color) !important;
+}
+
+.closed-day .hours-time {
+    color: var(--color-closed-text);
+    font-weight: 600;
+}
+
+.info-box {
+    background-color: #fafafa;
+    border-left: 4px solid var(--primary-color);
+}
+
+.info-box p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* Responsive para Detalles */
+@media (max-width: 768px) {
+    .business-title-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .product-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .product-action {
+        width: 100%;
+    }
+    
+    .product-action .btn {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   9. SECCIÓN DE GALERÍA EN CARRETE HORIZONTAL (ACTUALIZADO)
+   ========================================================================== */
+.business-gallery-section {
+    margin-top: 30px;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 25px;
+}
+
+.gallery-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+/* Contenedor del scroll horizontal */
+.gallery-carousel-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Habilita el desplazamiento horizontal */
+    scroll-behavior: smooth;
+    padding-bottom: 10px; /* Espacio para que no tape la barra de scroll */
+    
+    /* Esconder barra de scroll por defecto en navegadores modernos (opcional) */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Modificamos la Grid para que actúe como un tren de vagones infinitos */
+.gallery-grid {
+    display: flex;
+    gap: 16px; /* Separación limpia entre imágenes */
+    width: max-content; /* Obliga a los elementos a mantenerse en una sola línea */
+}
+
+/* Configuración para Computadoras (Aparecen 3 completas, la 4ta se desborda en carrete) */
+.gallery-item {
+    flex-shrink: 0; /* Evita que las imágenes se aplasten */
+    width: calc((100vw - 40px - 70px - 32px) / 3); /* Cálculo exacto basado en el contenedor */
+    max-width: 350px; /* Tamaño máximo recomendado para mantener proporción */
+    height: 220px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Texto flotante al pasar el mouse */
+.gallery-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 70%);
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-overlay span {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Animaciones en PC */
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Estilos de barra de scroll sutiles */
+.gallery-carousel-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+.gallery-carousel-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.gallery-carousel-wrapper::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+.gallery-carousel-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* ==========================================================================
+   RESPONSIVE EXCLUSIVO PARA EL CARRETE MÓVIL
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* En celulares cambian las dimensiones: caben exactamente 2 fotos en pantalla */
+    .gallery-item {
+        width: calc((120vw - 90px) / 2); /* Deja ver exactamente 2 tarjetas completas */
+        height: 140px;
+    }
+
+    .gallery-overlay {
+        opacity: 1; /* El texto permanece siempre visible en pantallas táctiles */
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 60%);
+    }
+    
+    .gallery-overlay span {
+        font-size: 0.75rem;
+    }
+}
+
+
 
 /* Ajuste responsive para celulares muy pequeños */
 @media (max-width: 400px) {
@@ -821,7 +1129,7 @@ a {
 
 @media (max-width: 768px) {
     .nav-brand { width: 50%; }
-    .nav-actions { width: 50%; }
+    .nav-actions { width: 100%; }
     
     .nav-menu-container {
         display: inline-block;
@@ -888,7 +1196,7 @@ a {
     color: var(--white);
     padding: 10px 10px;
     border-radius: var(--radius);
-    border: 1px solid #f3f4f6;
+    border: 2px solid #525252;
     box-shadow: var(--shadow-sm);
 }
 
@@ -920,5 +1228,34 @@ a {
     padding: 5px;
     border-radius: 8px;
     border: 1px solid #f3f4f6;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    width: 20%;
+}
+
+.business-header-card {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid #f3f4f6;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+}
+
+.business-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-top: 5px;
+}
+
+.business-category {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 500;
 }
 }
