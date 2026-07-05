@@ -908,6 +908,14 @@ a {
     color: var(--text-light);
     line-height: 1.5;
 }
+.current-day td {
+    font-weight: 700; /* Pone todo el texto de la fila en negritas */
+    color: var(--primary-color) !important; /* Aplica el color índigo de tu marca */
+}
+
+.current-day .hours-time {
+    color: var(--primary-color) !important;
+}
 
 /* Responsive para Detalles */
 @media (max-width: 768px) {

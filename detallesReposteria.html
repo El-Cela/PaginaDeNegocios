@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiMatch - Encuentra Servicios en tu Zona</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="body2">
+
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="nav-brand">
+                    <span>ServiMatch</span>
+                </div>
+
+                <div class="nav-menu-container">
+
+
+                    <nav class="nav-menu" id="navMenu">
+                        <a href="index.html">Explorar</a>
+                        <a href="#">Cómo funciona</a>
+                        <a href="soporte.html">Soporte</a>
+                    </nav>
+
+                </div>
+
+                <div class="nav-actions">
+                    <a href="login.html">Iniciar Sesión</a>
+                    <button class="btn btn-primary">Publicar mi Negocio</button>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. CONTENIDO PRINCIPAL (Detalle del Negocio) -->
+    <main class="container main-content">
+
+        <!-- Encabezado del Perfil del Negocio -->
+        <div class="business-header-card">
+            <div class="business-title-row">
+                <div>
+                    <span class="badge" id="businessStatusBadge">Cargando estado...</span>
+                    <h1 class="business-title">Reposteria</h1>
+                    <p class="business-category">Postres caseros</p>
+                </div>
+                <button class="business-location-badge btn-map-trigger" id="openMapBtn"
+                    aria-label="Ver ubicación en mapa">
+                    📍 Col. Agraria <span class="map-link-text">(Ver mapa)</span>
+                </button>
+            </div>
+            <p class="business-long-desc">
+                Somos una repostería familiar que se dedica a crear postres deliciosos y artesanales con ingredientes frescos y de alta calidad. Nuestros productos son elaborados con pasión y cuidado, garantizando un sabor excepcional en cada bocado.
+            </p>
+            <!-- SECCIÓN: GALERÍA DE TRABAJOS EN CARRETE FLUIDO -->
+            <!-- SECCIÓN: GALERÍA DE TRABAJOS EN CARRETE HORIZONTAL -->
+            <div class="business-gallery-section">
+                <h4 class="gallery-title">📸 Galería de Trabajos y Evidencias</h4>
+
+                <div class="gallery-carousel-wrapper">
+                    <div class="gallery-grid">
+
+                        <!-- Imagen 1 -->
+                        <div class="gallery-item" data-title="Postre de Chocolate"
+                            data-desc="Delicioso postre de chocolate con relleno cremoso y cobertura de caramelo.">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd666ea9c?auto=format&fit=crop&w=500&q=80"
+                                alt="Postre de Chocolate">
+                            <div class="gallery-overlay"><span>Postre de Chocolate</span></div>
+                        </div>
+
+                       
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+     NUEVO COMPONENTE: ESTRUCTURA DE LA VENTANA MODAL (Oculta por defecto)
+     ========================================== -->
+            <div id="galleryModal" class="modal-overlay">
+                <div class="modal-container">
+                    <button class="modal-close-btn" id="closeModal">&times;</button>
+
+                    <div class="modal-layout">
+                        <div class="modal-img-area">
+                            <img id="modalImg" src="" alt="Vista previa">
+                        </div>
+                        <div class="modal-info-area">
+                            <h3 id="modalTitle">Título del Trabajo</h3>
+                            <p id="modalDesc">Descripción del servicio o producto realizado...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+
+        <!-- Layout de Dos Columnas: Catálogo e Información Lateral -->
+        <div class="support-container">
+
+            <!-- Columna Izquierda: Catálogo de Productos/Servicios a Adquirir -->
+            <div class="products-section">
+                <h3>Servicios y Productos Disponibles</h3>
+                <p class="section-subtitle">Selecciona lo que necesites para adquirirlo o agendarlo de inmediato.</p>
+
+                <div class="products-list">
+
+                    <!-- Item de Producto 1 -->
+                    <div class="product-item">
+                        <div class="product-details">
+                            <h4>Flan Napolitano individual</h4>
+                            <p>Rico flan napolitano hecho con ingredientes frescos y de alta calidad, ideal para disfrutar como postre individual.</p>
+                            </p>
+                            <span class="product-price">$45 MXN</span>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-primary btn-ws"
+                                data-mensaje="¡Hola! Quiero más información sobre el flan napolitano">Adquirir
+                                Servicio</button>
+                        </div>
+                    </div>
+
+                    <!-- Item de Producto 2 -->
+                    <div class="product-item">
+                        <div class="product-details">
+                            <h4>Carlota individual</h4>
+                            <p>Rica carlota hecha con ingredientes frescos y de alta calidad, ideal para disfrutar como postre individual.</p>
+                            <span class="product-price">$45 MXN</span>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-primary btn-ws"
+                                data-mensaje="¡Hola! Quiero más información sobre la carlota individual">Adquirir
+                                Servicio</button>
+                        </div>
+                    </div>
+
+                    <!-- Item de Producto 3 -->
+                    <div class="product-item">
+                        <div class="product-details">
+                            <h4>Pastel Grande</h4>
+                            <p>Rico pastel grande hecho con ingredientes frescos y de alta calidad, ideal para compartir como postre.</p>
+                            <span class="product-price">$300 MXN</span>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-primary btn-ws"
+                                data-mensaje="¡Hola! Quiero más información sobre el pastel grande">Adquirir
+                                Producto</button>
+                        </div>
+                    </div>
+
+                    <div class="product-item">
+                        <div class="product-details">
+                            <h4>Shesscake de Fresa</h4>
+                            <p>Rico shesscake de fresa hecho con ingredientes frescos y de alta calidad, ideal para compartir como postre.</p>
+                            <span class="product-price">$300 MXN</span>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-primary btn-ws"
+                                data-mensaje="¡Hola! Quiero más información sobre el shesscake de fresa">Adquirir
+                                Producto</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Horarios e Información del Administrador -->
+            <div class="business-sidebar">
+                <div class="sidebar-card">
+                    <h4>🕒 Horarios de Atención</h4>
+                    <table class="hours-table" id="hoursTable">
+                        <tr data-day="1">
+                            <td>Lunes</td>
+                            <td class="hours-time">9:00 AM - 6:00 PM</td>
+                        </tr>
+                        <tr data-day="2">
+                            <td>Martes</td>
+                            <td class="hours-time">9:00 AM - 6:00 PM</td>
+                        </tr>
+                        <tr data-day="3">
+                            <td>Miércoles</td>
+                            <td class="hours-time">9:00 AM - 6:00 PM</td>
+                        </tr>
+                        <tr data-day="4">
+                            <td>Jueves</td>
+                            <td class="hours-time">9:00 AM - 6:00 PM</td>
+                        </tr>
+                        <tr data-day="5">
+                            <td>Viernes</td>
+                            <td class="hours-time">9:00 AM - 6:00 PM</td>
+                        </tr>
+                        <tr data-day="6">
+                            <td>Sábado</td>
+                            <td class="hours-time">10:00 AM - 2:00 PM</td>
+                        </tr>
+                        <tr data-day="0" class="closed-day">
+                            <td>Domingo</td>
+                            <td class="hours-time">Cerrado</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="sidebar-card info-box">
+                    <h4>🛡️ Compra Segura</h4>
+                    <p>Al hacer clic en "Adquirir", tu solicitud se guardará de inmediato en nuestro sistema y se
+                        generará una orden para el administrador del negocio.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ==========================================
+     NUEVO COMPONENTE: MODAL DEL MAPA (Oculto por defecto)
+     ========================================== -->
+    <div id="mapModal" class="modal-overlay">
+        <div class="map-modal-container">
+            <button class="modal-close-btn" id="closeMapModal">&times;</button>
+
+            <div class="map-modal-header">
+                <h3>📍 Ubicación de Repostería Deliciosa</h3>
+                <p>Col. Agraria.</p>
+            </div>
+
+            <div class="map-iframe-container">
+                <!-- Embebido oficial de Google Maps (Placeholder real de Las Choapas) -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d574.5911133585201!2d-94.09323955756808!3d17.909537517643958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1783212860799!5m2!1ses!2smx"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Reposteria. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script de control de UI -->
+    <script>
+        // Hamburguesa
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('open');
+        });
+    </script>
+
+    <script src="js/detallesReposteria.js"></script>
+
+
+
+</body>
+
+</html>
