@@ -1046,7 +1046,116 @@ a {
     }
 }
 
+/* ==========================================================================
+   10. MODAL / LIGHTBOX PARA DETALLES DE GALERÍA
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(17, 24, 39, 0.75); /* Fondo oscuro con transparencia */
+    z-index: 1000;
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
+/* Se muestra cuando se añade la clase .show vía JS */
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-container {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 750px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-md);
+    animation: fadeInModal 0.3s ease;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+    color: var(--text-dark);
+}
+
+/* Diseño de dos columnas internas para el modal */
+.modal-layout {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-img-area {
+    flex: 1.2;
+    background-color: #000;
+    height: 380px;
+}
+
+.modal-img-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-info-area {
+    flex: 1;
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-info-area h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.modal-info-area p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Adaptación total para pantallas móviles */
+@media (max-width: 680px) {
+    .modal-layout {
+        flex-direction: column; /* Cambia a una sola columna vertical */
+    }
+    
+    .modal-img-area {
+        height: 220px;
+    }
+    
+    .modal-info-area {
+        padding: 25px 20px;
+    }
+    .modal-img-area img {
+    width: 100%;
+    height: auto;       /* Cambia 100% por auto */
+    max-height: 40vh;   /* Evita que ocupe más del 40% de la pantalla del celular hacia abajo */
+    object-fit: contain; /* O 'cover', dependiendo de si prefieres que llene el espacio o se vea completa */
+}
+}
 
 /* Ajuste responsive para celulares muy pequeños */
 @media (max-width: 400px) {
@@ -1055,7 +1164,78 @@ a {
     }
 }
 
+/* ==========================================================================
+   11. MODAL DEL MAPA Y UBICACIÓN
+   ========================================================================== */
+.btn-map-trigger {
+    border: none;
+    cursor: pointer;
+    background-color: #e0e7ff; /* Tono índigo muy suave */
+    color: var(--text-light);
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
 
+.btn-map-trigger:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.map-link-text {
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-left: 4px;
+}
+
+/* Contenedor específico para el mapa modal */
+.map-modal-container {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 650px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-md);
+    padding: 25px;
+    animation: fadeInModal 0.3s ease;
+}
+
+.map-modal-header {
+    margin-bottom: 15px;
+    padding-right: 30px; /* Evita que el texto choque con la 'X' de cerrar */
+}
+
+.map-modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.map-modal-header p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* Contenedor responsivo para el mapa */
+.map-iframe-container {
+    width: 100%;
+    height: 350px; /* Altura ideal para el mapa */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #e5e7eb;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+    .map-modal-container {
+        padding: 20px 15px;
+    }
+    .map-iframe-container {
+        height: 280px; /* Reducimos la altura en pantallas pequeñas */
+    }
+}
 
 
 /*-------------------------------------------------------------------------------------------
